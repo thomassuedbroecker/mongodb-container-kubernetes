@@ -2,11 +2,11 @@
 
 ## Objective
 
-The object is to provide a small guide, how to setup a mongoDB server and Mongo UI on a free IBM Cloud Kubernetes cluster. 
+The objective is to provide a small guide, how to setup a mongoDB server and Mongo UI on a free IBM Cloud Kubernetes cluster. 
 
->> No `persistent volume claims` are used. So, keep in mind, if your Pod in Kubernetes crashes the data of the Database is lost.
+>> On the free IBM Cloud Kubernetes cluster: No [`persistent volume claims`](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) are used. So, keep in mind, if your Pod in Kubernetes crashes the data of the Database is lost.
 
-Based on the security feature of the [mongoDB default port `27017`](https://docs.mongodb.com/manual/reference/default-mongodb-port/), you need to run your application to access the Mongo database in the Kubernetes cluster.
+Based on the _"security feature"_ of the [mongoDB default port `27017`](https://docs.mongodb.com/manual/reference/default-mongodb-port/), you need to run your application to access the Mongo database in the Kubernetes cluster.
 
 In other words, your UI application has to access the database using a server application, which also run on the free Kubernetes cluster (like the Mongo UI in that example here). You should implement a [backend for frontend architecture](https://developer.ibm.com/technologies/microservices/patterns/create-backend-for-frontend-application-architecture/).
 
