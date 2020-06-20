@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mongo-database
+  name: mongo-database
+  namespace: mongo-db
+spec:
+  selector:
+    matchLabels:
+      app: mongo-database
+  template:
+    metadata:
+      labels:
+        app: mongo-database
+    spec:
+      containers:
+      - env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          value: mongoadmin
+        - name:  MONGO_INITDB_ROOT_PASSWORD
+          value: secret
+        - name: MONGO_INITDB_DATABASE
+          value: monogodb
+        image: mongo:4.0.19
+        imagePullPolicy: Always
+        name: mongo
+        ports:
+        - containerPort: 27017
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 60m
+            memory: 512Mi
+          requests:
+            cpu: 30m
+            memory: 128Mi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: mongo-database
+  name: mongo-database
+  namespace: mongo-db
+spec:
+  ports:
+  - name: http
+    port: 27017
+    protocol: TCP
+  selector:
+    app: mongo-database
+  type: NodePort
+
+

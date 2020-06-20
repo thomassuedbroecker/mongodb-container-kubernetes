@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mongo-express
+  name: mongo-express
+  namespace: mongo-db
+spec:
+  selector:
+    matchLabels:
+      app: mongo-express
+  template:
+    metadata:
+      labels:
+        app: mongo-express
+    spec:
+      containers:
+      - env:
+        - name: ME_CONFIG_MONGODB_SERVER 
+          value: mongo-database
+        - name: ME_CONFIG_MONGODB_ADMINUSERNAME
+          value: mongoadmin
+        - name: ME_CONFIG_MONGODB_ADMINPASSWORD
+          value: secret
+        image: mongo-express:latest
+        imagePullPolicy: Always
+        name: mongo-express
+        ports:
+        - containerPort: 8081
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 60m
+            memory: 512Mi
+          requests:
+            cpu: 30m
+            memory: 128Mi
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: mongo-express
+  name: mongo-express
+  namespace: mongo-db
+spec:
+  ports:
+  - name: http
+    port: 8081
+    protocol: TCP
+  selector:
+    app: mongo-express
+  type: NodePort
+
+
