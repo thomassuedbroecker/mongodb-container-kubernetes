@@ -16,7 +16,7 @@ Checkout the video on YouTube:
 
 ## Overview
 
-The gif shows what is automated deployed by the bash script and the yaml specification, and in addition, how the Mongo UI access the Mongo DB server from a browser.
+The gif shows what is automated deployed by the bash script and the yaml specification, and in addition, how the Mongo UI access the MongoDB server from a browser.
 
 * Automated deployment:
 
@@ -26,10 +26,10 @@ The gif shows what is automated deployed by the bash script and the yaml specifi
     4) We create a Pod for the Mongo UI and pointing to the `mongo-express` image in dockerhub.
     5) We create a [`Kubernetes service`](https://kubernetes.io/docs/concepts/services-networking/service/) for the `mongo-ui` Pod to use the DNS inside Kubernetes and make the service available from outside using the `NodePort` of the current `WorkerNode`.
 
-* Access the Mongo DB using the Mongo UI
+* Access the mongoDB using the Mongo UI (Mongo-Express)
 
-    1) Open the browser and access the Mongo Express application with http://WorkerNodeIP:NodePort
-    2) The `mongo-ui` Pod access the `mongo-db` server with the [`Kubernetes service`](https://kubernetes.io/docs/concepts/services-networking/service/) name and Mongo credentials.
+    1) Open the browser and access the Mongo-Express application with http://WorkerNodeIP:NodePort
+    2) The `mongo-ui` Pod access the `mongo-db` server with the [`Kubernetes service`](https://kubernetes.io/docs/concepts/services-networking/service/) name and MongoDB credentials.
 
     In the following extract from the `mongo-express-docker.yaml` file, you see the settings for `mongo-express` application to access the Mongo DB service. 
     The value of the `ME_CONFIG_MONGODB_SERVER` is the [`Kubernetes service`](https://kubernetes.io/docs/concepts/services-networking/service/) name `mongo-database`.
@@ -74,7 +74,7 @@ Follow the steps in the Access tab, by starting from After your cluster provisio
 
 ### Step 4: Understand the `setup-mongo-db-and-ui.sh` script
 
-Here are the relevant varibales in the bash script:
+Here are the relevant variables in the bash script:
 
 ```bash
 #!/bin/bash
