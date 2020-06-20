@@ -1,12 +1,12 @@
-# How to setup a simple Mongo DB server and Mongo UI container in Hackathon on a free IBM Cloud Kubernetes cluster
+# How to setup a simple mongoDB server and Mongo UI container in Hackathon on a free IBM Cloud Kubernetes cluster
 
 ## Objective
 
-The object is to provide a small guide, how to setup a Mongo DB server and Mongo UI on a free IBM Cloud Kubernetes cluster. 
+The object is to provide a small guide, how to setup a mongoDB server and Mongo UI on a free IBM Cloud Kubernetes cluster. 
 
 >> No `persistent volume claims` are used. So, keep in mind, if your Pod in Kubernetes crashes the data of the Database is lost.
 
-Based on the securies feature of the mongo port `27017`, you need to run the application in the Kubernetes cluster to access the Mongo database.
+Based on the security feature of the mongo port `27017`, you need to run the application in the Kubernetes cluster to access the Mongo database.
 
 In other words, your UI application has to access the database using a server application, which also run on the free Kubernetes cluster (like the Mongo UI in that example here). You should implement a [backend for frontend architecture](https://developer.ibm.com/technologies/microservices/patterns/create-backend-for-frontend-application-architecture/).
 
@@ -21,7 +21,7 @@ The gif shows what is automated deployed with the bash script and the yaml speci
 * Automated deployment:
 
     1) We have two container images in dockerhub `mongo` and `mongo-express`
-    2) We create a `Pod` for the Mongo server and pointing to the `mongo` image in dockerhub
+    2) We create a `Pod` for the mongoBD server and pointing to the `mongo` image in dockerhub
     3) We create a [`Kubernetes service`](https://kubernetes.io/docs/concepts/services-networking/service/) for the `mongo-db` Pod to use the DNS inside Kubernetes
     4) We create a Pod for the Mongo UI and pointing to the `mongo-express` image in dockerhub.
     5) We create a [`Kubernetes service`](https://kubernetes.io/docs/concepts/services-networking/service/) for the `mongo-ui` Pod to use the DNS inside Kubernetes and make the service available from outside using the `NodePort` of the current `WorkerNode`.
