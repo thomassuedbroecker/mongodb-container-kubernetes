@@ -6,7 +6,7 @@ The object is to provide a small guide, how to setup a mongoDB server and Mongo 
 
 >> No `persistent volume claims` are used. So, keep in mind, if your Pod in Kubernetes crashes the data of the Database is lost.
 
-Based on the security feature of the mongo port `27017`, you need to run the application in the Kubernetes cluster to access the Mongo database.
+Based on the security feature of the [mongoDB default port `27017`](https://docs.mongodb.com/manual/reference/default-mongodb-port/), you need to run the application in the Kubernetes cluster to access the Mongo database.
 
 In other words, your UI application has to access the database using a server application, which also run on the free Kubernetes cluster (like the Mongo UI in that example here). You should implement a [backend for frontend architecture](https://developer.ibm.com/technologies/microservices/patterns/create-backend-for-frontend-application-architecture/).
 
