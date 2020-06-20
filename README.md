@@ -10,6 +10,9 @@ Based on the securies feature of the mongo port `27017`, you need to run the app
 
 In other words, your UI application has to access the database using a server application, which also run on the free Kubernetes cluster (like the Mongo UI in that example here). You should implement a [backend for frontend architecture](https://developer.ibm.com/technologies/microservices/patterns/create-backend-for-frontend-application-architecture/).
 
+Checkout the video on YouTube:
+
+[!["Mongo DB server" with "Mongo UI" and a free IBM Cloud Kubernetes cluster](https://img.youtube.com/vi/JXlplSSK1k4/0.jpg)](https://www.youtube.com/watch?v=JXlplSSK1k4 "Click play on youtube")
 
 ## Overview
 
